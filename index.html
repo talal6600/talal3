@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#4F008C">
+    <title>مستر مندوب Pro - النسخة الاحترافية</title>
+    
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="https://www.stc.com.sa/content/dam/stc/footer-icons/stc-badge-purple.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              stc: {
+                purple: '#4F008C',
+                dark: '#2d0050',
+                light: '#F2F0F9',
+                accent: '#FF375E'
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body { 
+        font-family: 'Tajawal', sans-serif;
+        background-color: #F8F9FE;
+        overscroll-behavior-y: contain;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      ::-webkit-scrollbar { width: 0px; background: transparent; }
+      
+      #fallback-loader {
+        position: fixed; inset: 0; background: white; z-index: 9999;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+      }
+      .spinner { width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #4F008C; border-radius: 50%; animation: spin 1s linear infinite; }
+      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+    
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.284.0?external=react",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="fallback-loader">
+        <div class="spinner"></div>
+        <p class="mt-4 font-bold text-stc-purple">جاري تحميل النظام...</p>
+    </div>
+
+    <div id="root"></div>
+    
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" data-type="module">
+      import React from 'react';
+      import { createRoot } from 'react-dom/client';
+      import App from './App.tsx';
+
+      const rootElement = document.getElementById('root');
+      if (rootElement) {
+        const root = createRoot(rootElement);
+        root.render(<App />);
+        // إخفاء اللودر بعد الرندر
+        setTimeout(() => {
+          const loader = document.getElementById('fallback-loader');
+          if (loader) loader.style.display = 'none';
+        }, 500);
+      }
+    </script>
+</body>
+</html>
