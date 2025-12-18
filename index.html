@@ -74,7 +74,6 @@
     <script type="module" src="./index.tsx"></script>
 
     <script>
-      // إخفاء اللودر تلقائياً بعد ثانيتين كأمان إضافي
       window.addEventListener('load', () => {
         setTimeout(() => {
           const loader = document.getElementById('fallback-loader');
@@ -82,7 +81,7 @@
             loader.style.opacity = '0';
             setTimeout(() => loader.style.display = 'none', 500);
           }
-        }, 2000);
+        }, 1500);
       });
     </script>
 </body>

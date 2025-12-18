@@ -172,7 +172,7 @@ const App = () => {
         {activeView === 'home' && (
           <>
             <div className="grid grid-cols-2 gap-4">
-              <StatCard label="مبيعات اليوم" value={`${dayTotal} ﷼`} icon={<TrendingUp size={18}/>} color="purple" />
+              <StatCard label="مبيعات اليوم" value={`${String(dayTotal)} ﷼`} icon={<TrendingUp size={18}/>} color="purple" />
               <StatCard label="إجمالي الطلبات" value={String(dayTx.length)} icon={<CheckCircle2 size={18}/>} color="emerald" />
             </div>
 
@@ -184,7 +184,7 @@ const App = () => {
                         <span className="text-xl font-black">{String(targetMetrics.percent)}%</span>
                     </div>
                     <div className="h-2 bg-black/20 rounded-full overflow-hidden">
-                        <div className="h-full bg-emerald-400 transition-all duration-700" style={{ width: `${targetMetrics.percent}%` }} />
+                        <div className="h-full bg-emerald-400 transition-all duration-700" style={{ width: `${String(targetMetrics.percent)}%` }} />
                     </div>
                 </div>
             </div>
